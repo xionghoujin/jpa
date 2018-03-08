@@ -16,17 +16,35 @@ public class Register {
     @NotNull(message = "age不能为空，且不能小于18岁")
     @Min(18)
     private Integer age;
+    @NotBlank(message = "phone不能为空")
+    private String phone;
     @NotNull(message = "address不能为空")
     private String address;
+    @NotBlank(message = "question不能为空")
+    private String question;
+    @NotBlank(message = "answer不能为空")
+    private String answer;
 
     public Register() {
     }
 
-    public Register(String username,String password,Integer age,String address) {
+    public Register(@NotBlank(message = "name不能为空") String username, @NotBlank(message = "password不能为空") String password, @NotNull(message = "age不能为空，且不能小于18岁") @Min(18) Integer age, @NotBlank String phone, @NotNull(message = "address不能为空") String address, @NotBlank(message = "question不能为空") String question, @NotBlank(message = "answer不能为空") String answer) {
         this.username = username;
         this.password = password;
         this.age = age;
+        this.phone = phone;
         this.address = address;
+        this.question = question;
+        this.answer = answer;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Register setPhone(String phone) {
+        this.phone = phone;
+        return this;
     }
 
     public String getUsername() {
@@ -62,6 +80,24 @@ public class Register {
 
     public Register setAddress(String address) {
         this.address = address;
+        return this;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public Register setQuestion(String question) {
+        this.question = question;
+        return this;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public Register setAnswer(String answer) {
+        this.answer = answer;
         return this;
     }
 }
