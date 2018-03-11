@@ -9,6 +9,7 @@ import com.example.demo.util.MD5Util;
 import com.example.demo.vo.Login;
 import com.example.demo.vo.Register;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,7 @@ public class PersonServiceImpl implements IPersonService {
      * @return
      */
     @Override
+    @Cacheable(value = "user", key = "#login.username")//将数据添加进缓存
     public ServerResponse<User> login(Login login) {
         User user = userRepository.findByUsernameAndPassword(login.getUsername(),MD5Util.MD5EncodeUtf8(login.getPassword()));
         if (user != null) {
