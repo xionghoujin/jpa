@@ -5,7 +5,7 @@ package com.example.demo.common;
  */
 public class Const {
     public static final String CURRENT_USER = "currentUser";//当前用户
-
+    public static int i = 1;
     public interface Role {
         int ROLE_CUSTOMER = 0;
         int ROLE_ADMIN = 1;
